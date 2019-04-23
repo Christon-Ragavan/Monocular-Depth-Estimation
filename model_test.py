@@ -129,6 +129,43 @@ print ("Truth", np.argmax(y_test_label[0]))
 
 
 
+fig = plt.figure()
+ax1 = fig.add_subplot(131)
+ax2 = fig.add_subplot(132)
+ax3 = fig.add_subplot(133)
 
-plt.imshow(predictions[0].reshape(28,28))
+ax1.imshow(predictions[0].reshape(28,28))
+ax2.imshow(X_test[0].reshape(28,28))
+ax3.imshow(X_test[0].reshape(28,28))
+
+ax1.title.set_text('Original_RGB_image')
+ax2.title.set_text('Ground_truth_Depth_map')
+ax3.title.set_text('Predicted_Depth_map')
+
 plt.show()
+
+
+
+# fig = plt.figure()
+# ax1 = fig.add_subplot(121)
+# ax2 = fig.add_subplot(122)
+#
+ax1.imshow(predictions[0].reshape(28,28))
+ax2.imshow(X_test[0].reshape(28,28))
+#
+# ax1.title.set_text('Predicted')
+# ax2.title.set_text('Original')
+#
+# plt.show()
+
+
+# plt.subplot(121)
+# plt.imshow(predictions[0].reshape(28,28))
+# plt.subplot(122)
+# plt.imshow(X_test[0].reshape(28,28))
+#
+# plt.show()
+
+
+
+
