@@ -18,11 +18,9 @@ from sklearn.model_selection import train_test_split
 import get_dataset
 import utils
 import tensorflow as tf
-
-
-
-
-
+from keras import backend as K
+K.tensorflow_backend._get_available_gpus()
+# import work
 
 
 def de_conv():

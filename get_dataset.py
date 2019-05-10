@@ -1,10 +1,10 @@
 
-import skimage.io as io
+# import skimage.io as io
 import numpy as np
 import h5py
 import os
 from scipy.io import loadmat
-import tables
+# import tables
 import matplotlib.pyplot as plt
 import utils
 
