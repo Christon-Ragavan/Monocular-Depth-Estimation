@@ -10,17 +10,51 @@ class transformation():
 
     def raw_image_tansformation(raw_image):
 
-        trans_raw_images = np.empty([480, 640,3])
+        """
+        input saphae
+        :return:
+        """
+        print("Inputshape:",raw_image.shape)
+        width = raw_image.shape[1]
+        height = raw_image.shape[2]
+        channel = raw_image.shape[0]
+        trans_raw_images = np.empty([width, height,channel])
         trans_raw_images[:, :, 0] = raw_image[0, :, :]
         trans_raw_images[:, :, 1] = raw_image[1, :, :]
         trans_raw_images[:, :, 2] = raw_image[2, :, :]
+
+        print("trans_raw_images:", trans_raw_images.shape)
         return trans_raw_images
 
     def depth_image_tansformation(depth_image):
-        trans_depth_images = np.empty([480, 640])
         trans_depth_images = depth_image.T
         return  trans_depth_images
+    #
+    def crop_images(raw_train, raw_test, depth_train, depth_test, DS_factor = 2):
+        DS_factor = 128
+        raw_train = raw_train[:, :DS_factor, :DS_factor,:]
+        raw_test = raw_test[:, :DS_factor, :DS_factor, : ]
+        depth_train = depth_train[:, :DS_factor, :DS_factor]
+        depth_test = depth_test[:,  :DS_factor, :DS_factor]
+        print("CROP TO SIZE OF ---->", raw_train.shape, raw_test.shape, depth_train.shape, depth_test.shape)
 
+        return raw_train, raw_test, depth_train, depth_test
+
+
+    # def crop_images(raw_train, raw_test, depth_train, depth_test, DS_factor = 2):
+    #     raw_train = raw_train[:, :, ::DS_factor, ::DS_factor]
+    #     raw_test = raw_test[:, :, ::DS_factor, ::DS_factor]
+    #     depth_train = depth_train[:, :, ::DS_factor, ::DS_factor]
+    #     depth_test = depth_test[:, :, ::DS_factor, ::DS_factor]
+    #     print("CROP TO SIZE OF ---->", raw_train.shape, raw_test.shape, depth_train.shape, depth_test.shape)
+    #
+    #     return raw_train, raw_test, depth_train, depth_test
+    # def crop_images(raw_train, raw_test, depth_train, depth_test, DS_factor = 2):
+    #     import cv2
+    #     thumbnail = cv.resize(im, (width / 10, height / 10), interpolation=cv.INTER_AREA)
+    #
+    #     return raw_train, raw_test, depth_train, depth_test
+    #
 
 class utils():
 
